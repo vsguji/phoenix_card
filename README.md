@@ -1,12 +1,8 @@
-<<<<<<< HEAD
-# phoenix_card
-Flutter 企业级组件: card
-=======
 <!--
  * @Author: lipeng 1162423147@qq.com
  * @Date: 2023-09-24 20:51:40
  * @LastEditors: lipeng 1162423147@qq.com
- * @LastEditTime: 2023-09-24 20:53:23
+ * @LastEditTime: 2023-09-24 21:42:51
  * @FilePath: /phoenix_card/README.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -44,4 +40,4 @@ const like = 'sample';
 ## Additional information
 
 phoenix 将做为企业级基础组件:Card,提供项目支持。
->>>>>>> 9626db1 ([new] 新建)
+
