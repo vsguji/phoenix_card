@@ -3,6 +3,7 @@ import 'package:phoenix_base/phoenix.dart';
 import 'package:phoenix_card/extension/pair_info_rich_grid_total_config.dart';
 
 import '../config/pair_info_rich_grid_config.dart';
+import '../extension/card_assets.dart';
 
 /// 两列key-value 展示信息的集合,需要配合[BrnRichGridInfo]使用
 ///
@@ -223,7 +224,7 @@ class BrnRichGridInfo {
           child: Padding(
             padding: EdgeInsets.only(left: isKey ? 0 : 4),
             child: PhoenixTools.getAssetSizeImage(
-                BaseAsset.iconPairInfoQuestion, 14, 14),
+                CardAssets.iconPairInfoQuestion, 14, 14),
           ));
     }
 

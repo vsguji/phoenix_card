@@ -4,6 +4,7 @@ import 'package:phoenix_base/phoenix.dart';
 import 'package:phoenix_card/extension/pair_info_table_total_config.dart';
 
 import '../config/pair_info_table_config.dart';
+import '../extension/card_assets.dart';
 
 /// key-value 展示信息的集合,需要配合[BrnInfoModal]使用
 ///
@@ -239,7 +240,7 @@ class _BrnPairInfoTableState extends State<BrnPairInfoTable> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Expanded(child: valueWidget),
-          PhoenixTools.getAssetImage(BaseAsset.iconRightArrow),
+          PhoenixTools.getAssetImage(CardAssets.iconRightArrow),
         ],
       );
     }
@@ -274,7 +275,7 @@ class _BrnPairInfoTableState extends State<BrnPairInfoTable> {
   }
 
   BrnInfoModal _foldButtonWidget() {
-    Image img = PhoenixTools.getAssetImage(BaseAsset.iconUpArrow);
+    Image img = PhoenixTools.getAssetImage(CardAssets.iconUpArrow);
     Transform trsm = Transform.rotate(angle: pi, child: img);
     Row row = Row(
       children: <Widget>[
@@ -334,7 +335,7 @@ class _BrnPairInfoTableState extends State<BrnPairInfoTable> {
   }
 
   BrnInfoModal _expandedButtonWidget() {
-    Image img = PhoenixTools.getAssetImage(BaseAsset.iconUpArrow);
+    Image img = PhoenixTools.getAssetImage(CardAssets.iconUpArrow);
     Row row = Row(
       children: <Widget>[
         Padding(
@@ -474,7 +475,7 @@ mixin PairInfoPart {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Expanded(child: valueWidget),
-          PhoenixTools.getAssetImage(BaseAsset.iconRightArrow),
+          PhoenixTools.getAssetImage(CardAssets.iconRightArrow),
         ],
       );
     }
@@ -873,7 +874,7 @@ class BrnInfoModal {
                     keyCallback();
                   }
                 },
-                child: PhoenixTools.getAssetImage(BaseAsset.iconQuestion),
+                child: PhoenixTools.getAssetImage(CardAssets.iconQuestion),
               ),
               Text(
                 '：',
@@ -906,7 +907,7 @@ class BrnInfoModal {
                   valueCallback();
                 }
               },
-              child: PhoenixTools.getAssetImage(BaseAsset.iconQuestion),
+              child: PhoenixTools.getAssetImage(CardAssets.iconQuestion),
             )
           ],
         );
@@ -924,7 +925,7 @@ class BrnInfoModal {
               keyCallback();
             }
           },
-          child: PhoenixTools.getAssetImage(BaseAsset.iconQuestion),
+          child: PhoenixTools.getAssetImage(CardAssets.iconQuestion),
         ));
         keyGen.addText('：',
             textStyle: themeData.keyTextStyle.generateTextStyle());
@@ -941,7 +942,7 @@ class BrnInfoModal {
               valueCallback();
             }
           },
-          child: PhoenixTools.getAssetImage(BaseAsset.iconQuestion),
+          child: PhoenixTools.getAssetImage(CardAssets.iconQuestion),
         ));
       }
       valueWidget = valueGen.build();

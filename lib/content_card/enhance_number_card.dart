@@ -3,6 +3,7 @@ import 'package:phoenix_base/phoenix.dart';
 import 'package:phoenix_card/extension/enhance_number_total_config.dart';
 
 import '../config/enhance_number_card_config.dart';
+import '../extension/card_assets.dart';
 
 /// 强化数字展示的组件
 ///
@@ -241,10 +242,11 @@ class BrnEnhanceNumberCard extends StatelessWidget {
     );
     Widget? icon;
     if (model.iconTapCallBack != null) {
-      icon = PhoenixTools.getAssetSizeImage(BaseAsset.iconQuestion, 14, 14);
+      icon = PhoenixTools.getAssetSizeImage(CardAssets.iconQuestion, 14, 14);
 
       if (model.numberInfoIcon == BrnNumberInfoIcon.arrow) {
-        icon = PhoenixTools.getAssetSizeImage(BaseAsset.iconRightArrow, 14, 14);
+        icon =
+            PhoenixTools.getAssetSizeImage(CardAssets.iconRightArrow, 14, 14);
       }
       debugPrint('${tp.height}');
       debugPrint(model.title);
