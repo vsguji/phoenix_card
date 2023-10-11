@@ -2,7 +2,7 @@
  * @Author: lipeng 1162423147@qq.com
  * @Date: 2023-09-24 21:02:00
  * @LastEditors: lipeng 1162423147@qq.com
- * @LastEditTime: 2023-09-24 21:06:20
+ * @LastEditTime: 2023-10-11 09:46:50
  * @FilePath: /phoenix_card/lib/extension/enhance_number_total_config.dart
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -33,11 +33,11 @@ class EnhanceNumberTotalConfig extends BaseTotalConfig {
 }
 
 extension BaseEnhanceNumberTotalConfig on BaseTotalConfig {
-  static EnhanceNumberCardConfig? _actionSheetConfig;
+  static EnhanceNumberCardConfig? _enhanceNumberConfig;
   EnhanceNumberCardConfig get enhanceNumberCardConfig =>
-      _actionSheetConfig ??
+      _enhanceNumberConfig ??
       BaseEnhanceNumberConfigUtils.defaultEnhanceNumberInfoConfig;
-  set actionSheetTotalConfig(EnhanceNumberTotalConfig config) {
-    _actionSheetConfig = config.enhanceNumberCardConfig;
+  set enhanceNumberTotalConfig(EnhanceNumberTotalConfig config) {
+    _enhanceNumberConfig = config.enhanceNumberCardConfig;
   }
 }
