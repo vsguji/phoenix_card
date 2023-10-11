@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:phoenix_card/phoenix_card.dart';
+import 'package:phoenix_base/phoenix.dart';
 
 void main() {
   runApp(const MyApp());
@@ -67,6 +68,19 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    BaseTotalConfig totalConfig = BaseTotalConfig();
+
+    EnhanceNumberCardTotalConfig cardTotalConfig = EnhanceNumberCardTotalConfig(
+        enhanceNumberCardConfig: EnhanceNumberCardConfig(
+            titleTextStyle: BaseTextStyle(color: Colors.red)));
+    totalConfig.enhanceNumberCardTotalConfig = cardTotalConfig;
+
+    // BaseInit.register(totalConfig: totalConfig);
   }
 
   @override
