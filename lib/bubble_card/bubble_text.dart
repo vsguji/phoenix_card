@@ -8,14 +8,14 @@ import 'package:phoenix_text/phoenix_text.dart';
 ///
 /// 布局规则：
 ///     组件的背景是气泡背景
-///     包装了[BrnExpandableText]组件，具备了展开收起的能力
+///     包装了[ExpandableText]组件，具备了展开收起的能力
 ///
 /// ```dart
-///   BrnBubbleText(
+///   BubbleText(
 ///      text: '在文本的右下角有更多或者收起按钮',
 ///   )
 ///
-///   BrnBubbleText(
+///   BubbleText(
 ///      text: '具备展开收起功能的文字面板，在文本的右下角有更多或者收起按钮',
 ///      maxLines: 2,
 ///   )
@@ -23,10 +23,10 @@ import 'package:phoenix_text/phoenix_text.dart';
 /// ```
 ///
 /// 相关文本组件如下:
-///  * [BrnExpandableText], 气泡背景的展开收起文本组件
-///  * [BrnInsertInfo], 气泡背景的文本组件
+///  * [ExpandableText], 气泡背景的展开收起文本组件
+///  * [InsertInfo], 气泡背景的文本组件
 ///
-class BrnBubbleText extends StatelessWidget {
+class BubbleText extends StatelessWidget {
   /// 显示的文本
   final String text;
 
@@ -46,7 +46,7 @@ class BrnBubbleText extends StatelessWidget {
   final TextStyle? textStyle;
 
   /// create BrnBubbleText
-  const BrnBubbleText(
+  const BubbleText(
       {Key? key,
       this.text = '',
       this.maxLines,
@@ -59,7 +59,8 @@ class BrnBubbleText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Image image = PhoenixTools.getAssetImageWithColor(
-        'icons/icon_right_top_pointer.png', bgColor);
+        'icons/icon_right_top_pointer.png', bgColor,
+        package: 'phoenix_card');
     Widget bubbleText = Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,

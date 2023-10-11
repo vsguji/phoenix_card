@@ -6,7 +6,7 @@ import 'package:phoenix_card/extension/pair_info_table_total_config.dart';
 import '../config/pair_info_table_config.dart';
 import '../extension/card_assets.dart';
 
-/// key-value 展示信息的集合,需要配合[BrnInfoModal]使用
+/// key-value 展示信息的集合,需要配合[InfoModal]使用
 ///
 /// 该组件有两种显示样式[isValueAlign],value字段是否对齐展示。
 ///
@@ -29,45 +29,45 @@ import '../extension/card_assets.dart';
 /// 对齐的情况是使用Table实现，通过自定义的[TableColumnWidth]来达到对齐的效果。
 /// TableColumnWidth提供了获取所有子节点宽度的API。
 ///
-/// 除了基本的信息展示外，使用[BrnInfoModal]还可以实现富文本、复杂Widget的功能。
+/// 除了基本的信息展示外，使用[InfoModal]还可以实现富文本、复杂Widget的功能。
 /// 样式：
 ///    支持文本、富文本和自定义的widget
 ///    常用的情况可以通过类中的静态函数构造
-///    富文本和Icon的情况推荐使用 [BrnRichTextGenerator] 构造
+///    富文本和Icon的情况推荐使用 [RichTextGenerator] 构造
 ///
-/// 如果不想要展开收起的功能，那么可以使用[BrnFollowPairInfo]和[BrnAlignPairInfo]
+/// 如果不想要展开收起的功能，那么可以使用[FollowPairInfo]和[AlignPairInfo]
 ///
-/// [BrnFollowPairInfo]的value紧跟随者key，只具备展示的功能
-/// [BrnAlignPairInfo]的value具备对齐的功能，只具备展示的功能
+/// [FollowPairInfo]的value紧跟随者key，只具备展示的功能
+/// [AlignPairInfo]的value具备对齐的功能，只具备展示的功能
 ///
 /// ```dart
-/// BrnPairInfoTable(
-///    children: <BrnInfoModal>[
-///       BrnInfoModal(keyPart: "名称：", valuePart: "内容内容内容内容"),
-///       BrnInfoModal(keyPart: "名称名：", valuePart: "内容内容内容内容内容"),
-///       BrnInfoModal(keyPart: "名称名称名：", valuePart: "内容内容内容内容内容"),
-///       BrnInfoModal(keyPart: "名称名称名称名称：", valuePart: "内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容"),
+/// PairInfoTable(
+///    children: <InfoModal>[
+///       InfoModal(keyPart: "名称：", valuePart: "内容内容内容内容"),
+///       InfoModal(keyPart: "名称名：", valuePart: "内容内容内容内容内容"),
+///       InfoModal(keyPart: "名称名称名：", valuePart: "内容内容内容内容内容"),
+///       InfoModal(keyPart: "名称名称名称名称：", valuePart: "内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容"),
 ///      ],
 /// ),
 ///
-/// BrnPairInfoTable(
+/// PairInfoTable(
 ///    isValueAlign : false,
-///    children: <BrnInfoModal>[
-///       BrnInfoModal(keyPart: "名称：", valuePart: "内容内容内容内容"),
-///       BrnInfoModal(keyPart: "名称名：", valuePart: "内容内容内容内容内容"),
-///       BrnInfoModal(keyPart: "名称名称名：", valuePart: "内容内容内容内容内容"),
-///       BrnInfoModal(keyPart: "名称名称名称名称：", valuePart: "内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容"),
+///    children: <InfoModal>[
+///       InfoModal(keyPart: "名称：", valuePart: "内容内容内容内容"),
+///       InfoModal(keyPart: "名称名：", valuePart: "内容内容内容内容内容"),
+///       InfoModal(keyPart: "名称名称名：", valuePart: "内容内容内容内容内容"),
+///       InfoModal(keyPart: "名称名称名称名称：", valuePart: "内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容"),
 ///      ],
 /// ),
 /// ```
 ///
 /// 其他信息展示组件
-///  * [BrnEnhanceNumberCard], 强化数字信息展示组件
-///  * [BrnRichInfoGrid], 两列富文本展示组件
-///  * [BrnAlignPairInfo], value对齐的文本组件
-///  * [BrnFollowPairInfo], key-value紧紧相随的的文本组件
+///  * [EnhanceNumberCard], 强化数字信息展示组件
+///  * [RichInfoGrid], 两列富文本展示组件
+///  * [AlignPairInfo], value对齐的文本组件
+///  * [FollowPairInfo], key-value紧紧相随的的文本组件
 ///
-class BrnPairInfoTable extends StatefulWidget {
+class PairInfoTable extends StatefulWidget {
   /// 文本信息是否对齐 默认不对齐
   final bool isValueAlign;
 
@@ -77,7 +77,7 @@ class BrnPairInfoTable extends StatefulWidget {
   final TableCellVerticalAlignment defaultVerticalAlignment;
 
   /// 待展示的文本信息集合
-  final List<BrnInfoModal> children;
+  final List<InfoModal> children;
 
   ///从第几个索引开始 具备展开收起的功能 如果是-1则不具备展开收起功能
   ///默认-1
@@ -104,8 +104,8 @@ class BrnPairInfoTable extends StatefulWidget {
   final ValueChanged<bool>? onFolded;
 
   /// create BrnPairInfoTable
-  BrnPairInfoTable(
-      {Key? key,
+  const PairInfoTable(
+      {super.key,
       required this.children,
       this.defaultVerticalAlignment = TableCellVerticalAlignment.baseline,
       this.isValueAlign = true,
@@ -121,7 +121,7 @@ class BrnPairInfoTable extends StatefulWidget {
   _BrnPairInfoTableState createState() => _BrnPairInfoTableState();
 }
 
-class _BrnPairInfoTableState extends State<BrnPairInfoTable> {
+class _BrnPairInfoTableState extends State<PairInfoTable> {
   //当前的展示状态
   late bool _isFolded;
 
@@ -129,16 +129,16 @@ class _BrnPairInfoTableState extends State<BrnPairInfoTable> {
   late int _expandAtIndex;
 
   // 收起状态显示的孩子
-  List<BrnInfoModal>? _foldList;
+  List<InfoModal>? _foldList;
 
   // 展开状态显示的孩子
-  List<BrnInfoModal?>? _expandedList;
+  List<InfoModal?>? _expandedList;
 
   // 在页面呈现的孩子
-  List<BrnInfoModal?>? _showList;
+  List<InfoModal?>? _showList;
 
   // 指定位置的最原始 modal
-  BrnInfoModal? indexModal;
+  InfoModal? indexModal;
 
   // 是否具备展开收起功能 如果不展示则显示全部
   bool _canFold = false;
@@ -173,7 +173,7 @@ class _BrnPairInfoTableState extends State<BrnPairInfoTable> {
   }
 
   @override
-  void didUpdateWidget(BrnPairInfoTable oldWidget) {
+  void didUpdateWidget(PairInfoTable oldWidget) {
     super.didUpdateWidget(oldWidget);
     themeData =
         themeData.merge(PairInfoTableConfig(rowSpacing: widget.rowDistance));
@@ -207,7 +207,7 @@ class _BrnPairInfoTableState extends State<BrnPairInfoTable> {
         customKeyWidth: widget.customKeyWidth,
       );
     } else {
-      showWidget = BrnFollowPairInfo(
+      showWidget = FollowPairInfo(
         children: _showList,
         itemSpacing: widget.itemSpacing,
         rowDistance: widget.rowDistance,
@@ -217,7 +217,7 @@ class _BrnPairInfoTableState extends State<BrnPairInfoTable> {
     return showWidget;
   }
 
-  Widget _finalValueWidget(BrnInfoModal data, {double? itemSpacing}) {
+  Widget _finalValueWidget(InfoModal data, {double? itemSpacing}) {
     Widget? valueWidget;
 
     if (data.valuePart is String) {
@@ -252,10 +252,10 @@ class _BrnPairInfoTableState extends State<BrnPairInfoTable> {
 
   /// 收起状态的孩子
   /// 替换指定位置的value为具备展开功能的widget
-  List<BrnInfoModal> _generateFoldList() {
-    List<BrnInfoModal> finalChildren = List<BrnInfoModal>.of(widget.children);
+  List<InfoModal> _generateFoldList() {
+    List<InfoModal> finalChildren = List<InfoModal>.of(widget.children);
     //生成新的value
-    BrnInfoModal expRowWidget = _foldButtonWidget();
+    InfoModal expRowWidget = _foldButtonWidget();
     //替换modal
     finalChildren[widget.expandAtIndex] = expRowWidget;
     //移除指定索引
@@ -266,15 +266,15 @@ class _BrnPairInfoTableState extends State<BrnPairInfoTable> {
   /// 张开状态的孩子
   /// 替换最后的value 为具备收起功能的 value
   /// 替换index的value 为原始的value
-  List<BrnInfoModal?> _generateExpandedList() {
-    List<BrnInfoModal?> finalChildren = List<BrnInfoModal?>.of(widget.children);
-    BrnInfoModal foldRowWidget = _expandedButtonWidget();
+  List<InfoModal?> _generateExpandedList() {
+    List<InfoModal?> finalChildren = List<InfoModal?>.of(widget.children);
+    InfoModal foldRowWidget = _expandedButtonWidget();
     finalChildren[_expandAtIndex] = indexModal;
     finalChildren[widget.children.length - 1] = foldRowWidget;
     return finalChildren;
   }
 
-  BrnInfoModal _foldButtonWidget() {
+  InfoModal _foldButtonWidget() {
     Image img = PhoenixTools.getAssetImage(CardAssets.iconUpArrow);
     Transform trsm = Transform.rotate(angle: pi, child: img);
     Row row = Row(
@@ -317,7 +317,7 @@ class _BrnPairInfoTableState extends State<BrnPairInfoTable> {
     Widget foldButtonWidget = layerCtn;
 
     /// 将原有的value显示替换为 stack
-    BrnInfoModal brnInfoModal = BrnInfoModal(
+    InfoModal brnInfoModal = InfoModal(
       isArrow: indexModal!.isArrow,
       keyPart: indexModal!.keyPart,
       valuePart: indexModal!.valuePart,
@@ -334,7 +334,7 @@ class _BrnPairInfoTableState extends State<BrnPairInfoTable> {
     return brnInfoModal;
   }
 
-  BrnInfoModal _expandedButtonWidget() {
+  InfoModal _expandedButtonWidget() {
     Image img = PhoenixTools.getAssetImage(CardAssets.iconUpArrow);
     Row row = Row(
       children: <Widget>[
@@ -362,21 +362,21 @@ class _BrnPairInfoTableState extends State<BrnPairInfoTable> {
         });
 
     Container layerCtn = Container(
-      padding: EdgeInsets.only(left: 30),
+      padding: const EdgeInsets.only(left: 30),
       alignment: Alignment.topRight,
-      child: gdt,
       decoration: BoxDecoration(
           gradient: LinearGradient(
         colors: [Colors.white.withAlpha(100), Colors.white, Colors.white],
         begin: Alignment.centerLeft,
         end: Alignment.centerRight,
       )),
+      child: gdt,
     );
 
     ///收起的widget
     Widget foldButtonWidget = layerCtn;
 
-    BrnInfoModal brnInfoModal = BrnInfoModal(
+    InfoModal brnInfoModal = InfoModal(
       isArrow: widget.children.last.isArrow,
       keyPart: widget.children.last.keyPart,
       valuePart: widget.children.last.valuePart,
@@ -438,7 +438,7 @@ mixin PairInfoPart {
     return defaultThemeData;
   }
 
-  Widget? finalKeyWidget(BrnInfoModal data, PairInfoTableConfig themeData) {
+  Widget? finalKeyWidget(InfoModal data, PairInfoTableConfig themeData) {
     Widget? keyWidget;
     if (data.keyPart is String) {
       keyWidget = keyOrValueTitleText(true, data.keyPart.toString(),
@@ -451,7 +451,7 @@ mixin PairInfoPart {
     return keyWidget;
   }
 
-  Widget finalValueWidget(BrnInfoModal data, PairInfoTableConfig themeData,
+  Widget finalValueWidget(InfoModal data, PairInfoTableConfig themeData,
       {double? itemSpacing}) {
     Widget? valueWidget;
 
@@ -519,9 +519,9 @@ mixin PairInfoPart {
   }
 }
 
-class BrnFollowPairInfo extends StatelessWidget with PairInfoPart {
+class FollowPairInfo extends StatelessWidget with PairInfoPart {
   /// 待展示的文本信息集合
-  final List<BrnInfoModal?>? children;
+  final List<InfoModal?>? children;
 
   /// 每一行的间距
   final double? rowDistance;
@@ -531,8 +531,8 @@ class BrnFollowPairInfo extends StatelessWidget with PairInfoPart {
 
   final PairInfoTableConfig? themeData;
 
-  BrnFollowPairInfo({
-    Key? key,
+  FollowPairInfo({
+    super.key,
     required this.children,
     this.rowDistance,
     this.itemSpacing,
@@ -567,7 +567,7 @@ class BrnFollowPairInfo extends StatelessWidget with PairInfoPart {
     );
   }
 
-  Widget _buildSingleInfo(BrnInfoModal infoModal, double keyMax,
+  Widget _buildSingleInfo(InfoModal infoModal, double keyMax,
       PairInfoTableConfig defaultThemeConfig) {
     Widget value = finalValueWidget(infoModal, defaultThemeConfig);
     if (infoModal.valueClickCallback != null) {
@@ -606,7 +606,7 @@ class BrnAlignPairInfo extends StatelessWidget with PairInfoPart {
   final TableCellVerticalAlignment defaultVerticalAlignment;
 
   /// 待展示的文本信息集合
-  final List<BrnInfoModal?>? children;
+  final List<InfoModal?>? children;
 
   ///控件的背景色 默认为白色
   final Color? backgroundColor;
@@ -622,7 +622,8 @@ class BrnAlignPairInfo extends StatelessWidget with PairInfoPart {
   final PairInfoTableConfig? themeData;
 
   BrnAlignPairInfo(
-      {this.children,
+      {super.key,
+      this.children,
       this.defaultVerticalAlignment = TableCellVerticalAlignment.baseline,
       this.rowDistance,
       this.backgroundColor,
@@ -651,7 +652,7 @@ class BrnAlignPairInfo extends StatelessWidget with PairInfoPart {
       textBaseline: TextBaseline.ideographic,
       columnWidths: <int, TableColumnWidth>{
         0: customKeyWidth ?? _MaxWrapTableWidth(maxWith),
-        1: FlexColumnWidth()
+        1: const FlexColumnWidth()
       },
       border: TableBorder.all(color: Colors.transparent),
       children: children!.map((data) {
@@ -668,7 +669,7 @@ class BrnAlignPairInfo extends StatelessWidget with PairInfoPart {
     return true;
   }
 
-  TableRow _buildSingleInfo(BrnInfoModal infoModal, bool isLast,
+  TableRow _buildSingleInfo(InfoModal infoModal, bool isLast,
       PairInfoTableConfig defaultThemeConfig) {
     Widget value = Padding(
         padding:
@@ -695,7 +696,7 @@ class BrnAlignPairInfo extends StatelessWidget with PairInfoPart {
 /// 基本的文本展示只需 传入keyPart和valuePart为字符串
 /// 复杂的展示 需要传入Widget，BrnInfoModal的若干静态方法 提供了丰富简便的富文本使用方式
 ///
-class BrnInfoModal {
+class InfoModal {
   /// 方便业务调用，具备两种类型 string 和 widget
   dynamic keyPart;
 
@@ -709,7 +710,7 @@ class BrnInfoModal {
   /// value的点击回调
   final VoidCallback? valueClickCallback;
 
-  BrnInfoModal(
+  InfoModal(
       {this.keyPart,
       this.valuePart,
       this.isArrow = false,
@@ -726,7 +727,7 @@ class BrnInfoModal {
   /// fontSize 文案的大小
   /// clickCallback 可点击文案点击的回调
   /// isArrow 是否最右侧存在箭头
-  static BrnInfoModal valueLastClickInfo(
+  static InfoModal valueLastClickInfo(
     BuildContext context,
     String keyTitle,
     String valueTitle,
@@ -801,7 +802,7 @@ class BrnInfoModal {
           .build();
     }
 
-    return BrnInfoModal(
+    return InfoModal(
       keyPart: keyTitle,
       valuePart: valueWidget,
       isArrow: isArrow,
@@ -818,7 +819,7 @@ class BrnInfoModal {
   /// keyCallback key的小问号点击的回调
   /// valueCallback value的小问号点击的回调
   ///   /// isArrow 是否最右侧存在箭头
-  static BrnInfoModal keyOrValueLastQuestionInfo(
+  static InfoModal keyOrValueLastQuestionInfo(
     BuildContext context,
     String keyTitle,
     String valueTitle, {
@@ -948,7 +949,7 @@ class BrnInfoModal {
       valueWidget = valueGen.build();
     }
 
-    return BrnInfoModal(
+    return InfoModal(
       keyPart: keyWidget,
       valuePart: valueWidget,
       isArrow: isArrow,
@@ -963,7 +964,7 @@ class BrnInfoModal {
   /// headIcon key前面的icon
   /// fontSize 文本
   /// isArrow 是否最右侧存在箭头
-  static BrnInfoModal keyHeadIconInfo(
+  static InfoModal keyHeadIconInfo(
     String keyTitle,
     String valueTitle, {
     Widget? headIcon,
@@ -997,7 +998,7 @@ class BrnInfoModal {
           ),
           alignment: PlaceholderAlignment.top);
       keyGen.addIcon(
-          SizedBox(
+          const SizedBox(
             width: 8,
           ),
           alignment: PlaceholderAlignment.middle);
@@ -1006,7 +1007,7 @@ class BrnInfoModal {
     keyGen.addText(keyTitle,
         textStyle: themeData.keyTextStyle.generateTextStyle());
 
-    return BrnInfoModal(
+    return InfoModal(
         keyPart: keyGen.build(),
         valuePart: valueTitle,
         isArrow: isArrow,
@@ -1014,7 +1015,7 @@ class BrnInfoModal {
   }
 
   /// value是富文本
-  static BrnInfoModal valueRichTextInfo(
+  static InfoModal valueRichTextInfo(
     String keyTitle,
     String valueTitle, {
     double? fontSize,
@@ -1036,7 +1037,7 @@ class BrnInfoModal {
         valueTextStyle: BaseTextStyle(fontSize: fontSize)
             .merge(BaseTextStyle.withStyle(valueTextStyle))));
 
-    return BrnInfoModal(
+    return InfoModal(
         keyPart: keyTitle,
         valuePart: Padding(
           padding: EdgeInsets.only(left: itemSpacing),

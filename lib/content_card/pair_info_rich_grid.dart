@@ -5,38 +5,38 @@ import 'package:phoenix_card/extension/pair_info_rich_grid_total_config.dart';
 import '../config/pair_info_rich_grid_config.dart';
 import '../extension/card_assets.dart';
 
-/// 两列key-value 展示信息的集合,需要配合[BrnRichGridInfo]使用
+/// 两列key-value 展示信息的集合,需要配合[RichGridInfo]使用
 ///
 /// 组件内部是通过GridView来实现的，GridView是通过宽高比来实现子节点的布局
 /// 并且组件内部处理了字体大小，高度变化的情况。
 ///
-/// 和[BrnPairInfoTable]组件不同，该组件的每个组件都是单行展示
+/// 和[PairInfoTable]组件不同，该组件的每个组件都是单行展示
 ///
-/// 除了基本的信息展示外，使用BrnRichGridInfo还可以实现富文本、复杂Widget的功能。
+/// 除了基本的信息展示外，使用RichGridInfo还可以实现富文本、复杂Widget的功能。
 /// 样式：
 ///    支持文本、富文本和自定义的widget
 ///    常用的情况可以通过类中的静态函数构造
-///    富文本和Icon的情况推荐使用 [BrnRichTextGenerator] 构造
+///    富文本和Icon的情况推荐使用 [RichTextGenerator] 构造
 ///
-/// BrnRichInfoGridWidget(
-///     pairInfoList: <BrnRichGridInfo>[
-///       BrnRichGridInfo.valueLastClickInfo('名称名称名称名称名称名称名称', '内容内容',
+/// RichInfoGridWidget(
+///     pairInfoList: <RichGridInfo>[
+///       RichGridInfo.valueLastClickInfo('名称名称名称名称名称名称名称', '内容内容',
 ///           keyQuestionCallback: (value) {
-///         BrnToast.show(value, context);
+///         Toast.show(value, context);
 ///       }),
-///       BrnRichGridInfo("名称：", '内容内容内容'),
-///       BrnRichGridInfo("名称：", '内容内容'),
-///       BrnRichGridInfo("名称：", '内容'),
+///       RichGridInfo("名称：", '内容内容内容'),
+///       RichGridInfo("名称：", '内容内容'),
+///       RichGridInfo("名称：", '内容'),
 ///      ],
 /// ),
 ///
 /// 其他信息展示组件
-///  * [BrnEnhanceNumberCard], 强化数字信息展示组件
-///  * [BrnPairInfoTable], 单列key-value信息集合组件
+///  * [EnhanceNumberCard], 强化数字信息展示组件
+///  * [PairInfoTable], 单列key-value信息集合组件
 ///
-class BrnRichInfoGrid extends StatelessWidget {
+class RichInfoGrid extends StatelessWidget {
   /// 待展示的文本信息
-  final List<BrnRichGridInfo>? pairInfoList;
+  final List<RichGridInfo>? pairInfoList;
 
   ///行间距 纵向
   final double? rowSpace;
@@ -58,7 +58,7 @@ class BrnRichInfoGrid extends StatelessWidget {
   final PairRichInfoGridConfig? themeData;
 
   /// create BrnRichInfoGrid
-  BrnRichInfoGrid({
+  const RichInfoGrid({
     Key? key,
     this.pairInfoList,
     this.padding,
@@ -102,10 +102,10 @@ class BrnRichInfoGrid extends StatelessWidget {
         var gridView = GridView.builder(
           shrinkWrap: true,
           padding: padding,
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             mainAxisSpacing: defaultConfig.rowSpacing,
-            crossAxisCount: this.crossAxisCount,
+            crossAxisCount: crossAxisCount,
             crossAxisSpacing: defaultConfig.itemSpacing,
             childAspectRatio: itemWidth / itemHeight,
           ),
@@ -125,15 +125,14 @@ class BrnRichInfoGrid extends StatelessWidget {
               ],
             );
           },
-          itemCount:
-              (null != this.pairInfoList) ? this.pairInfoList!.length : 0,
+          itemCount: (null != pairInfoList) ? pairInfoList!.length : 0,
         );
         return gridView;
       },
     );
   }
 
-  Widget _getKeyWidget(BrnRichGridInfo info, double width, BuildContext context,
+  Widget _getKeyWidget(RichGridInfo info, double width, BuildContext context,
       PairRichInfoGridConfig config) {
     if (info.keyPart == null) {
       return const SizedBox.shrink();
@@ -155,7 +154,7 @@ class BrnRichInfoGrid extends StatelessWidget {
     return const SizedBox.shrink();
   }
 
-  Widget _getValueWidget(BrnRichGridInfo info, PairRichInfoGridConfig config) {
+  Widget _getValueWidget(RichGridInfo info, PairRichInfoGridConfig config) {
     if (info.valuePart == null) {
       return Text('--', style: _getValueStyle('--', themeData: config));
     }
@@ -177,12 +176,12 @@ class BrnRichInfoGrid extends StatelessWidget {
 }
 
 /// 用于构建文本信息
-class BrnRichGridInfo {
+class RichGridInfo {
   ///
   final dynamic keyPart;
   final dynamic valuePart;
 
-  BrnRichGridInfo(this.keyPart, this.valuePart);
+  RichGridInfo(this.keyPart, this.valuePart);
 
   ///-----------以下静态方法为常见显示的快捷构造-----------
   /// value的最后一部分带有可点击的超链接
@@ -193,7 +192,7 @@ class BrnRichGridInfo {
   /// fontSize 文案的大小
   /// clickCallback 可点击文案点击的回调
   /// isArrow 是否最右侧存在箭头
-  static BrnRichGridInfo valueLastClickInfo(
+  static RichGridInfo valueLastClickInfo(
     BuildContext context,
     String keyTitle,
     String valueTitle, {
@@ -224,7 +223,8 @@ class BrnRichGridInfo {
           child: Padding(
             padding: EdgeInsets.only(left: isKey ? 0 : 4),
             child: PhoenixTools.getAssetSizeImage(
-                CardAssets.iconPairInfoQuestion, 14, 14),
+                CardAssets.iconPairInfoQuestion, 14, 14,
+                package: 'phoenix_card'),
           ));
     }
 
@@ -238,7 +238,7 @@ class BrnRichGridInfo {
         child: Padding(
           padding: const EdgeInsets.only(left: 4),
           child: Container(
-            constraints: BoxConstraints(maxWidth: 56),
+            constraints: const BoxConstraints(maxWidth: 56),
             child: Text(clickTitle,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
@@ -306,7 +306,7 @@ class BrnRichGridInfo {
       ),
     );
 
-    return BrnRichGridInfo(key, value);
+    return RichGridInfo(key, value);
   }
 }
 

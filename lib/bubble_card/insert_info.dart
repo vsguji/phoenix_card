@@ -2,7 +2,7 @@
  * @Author: lipeng 1162423147@qq.com
  * @Date: 2023-09-13 20:09:03
  * @LastEditors: lipeng 1162423147@qq.com
- * @LastEditTime: 2023-09-24 21:42:48
+ * @LastEditTime: 2023-10-10 14:01:54
  * @FilePath: /phoenix_card/lib/bubble_card/insert_info.dart
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -14,11 +14,11 @@ import 'package:phoenix_base/phoenix.dart';
 ///      右上角为不规则小三角
 ///
 /// ```dart
-///   BrnInsertInfo(
+///   InsertInfo(
 ///      infoText: '在文本的右下角有更多或者收起按钮',
 ///   )
 ///
-///   BrnInsertInfo(
+///   InsertInfo(
 ///      infoText: '具备展开收起功能的文字面板，在文本的右下角有更多或者收起按钮',
 ///      maxLines: 2,
 ///   )
@@ -26,10 +26,10 @@ import 'package:phoenix_base/phoenix.dart';
 /// ```
 ///
 /// 相关文本组件如下:
-///  * [BrnExpandableText], 气泡背景的展开收起文本组件
-///  * [BrnBubbleText], 气泡背景的文本组件
+///  * [ExpandableText], 气泡背景的展开收起文本组件
+///  * [BubbleText], 气泡背景的文本组件
 ///
-class BrnInsertInfo extends StatelessWidget {
+class InsertInfo extends StatelessWidget {
   /// 显示的文本
   final String infoText;
 
@@ -37,7 +37,7 @@ class BrnInsertInfo extends StatelessWidget {
   final int maxLines;
 
   /// create BrnInsertInfo
-  const BrnInsertInfo({Key? key, required this.infoText, this.maxLines = 2})
+  const InsertInfo({Key? key, required this.infoText, this.maxLines = 2})
       : super(key: key);
 
   @override
@@ -54,8 +54,8 @@ class BrnInsertInfo extends StatelessWidget {
     );
 
     Color color = const Color(0xFFF8F8F8);
-    Image image =
-        PhoenixTools.getAssetImage('icons/icon_right_top_pointer.png');
+    Image image = PhoenixTools.getAssetImage('icons/icon_right_top_pointer.png',
+        package: 'phoenix_card');
 
     Widget bubbleText = Row(
       mainAxisSize: MainAxisSize.min,

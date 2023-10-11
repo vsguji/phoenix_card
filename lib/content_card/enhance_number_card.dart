@@ -12,7 +12,7 @@ import '../extension/card_assets.dart';
 ///
 /// 该组件可以通过[rowCount]属性来控制，每一行具体的显示几个。
 ///
-/// 该组件需要配合[BrnNumberInfoItemModel]使用，BrnNumberInfoItemModel是每个元素的单独模型。
+/// 该组件需要配合[NumberInfoItemModel]使用，NumberInfoItemModel是每个元素的单独模型。
 ///
 /// 布局规则
 ///     1：每一行展示指定个数的Item，其中多余指定个数 则换行。
@@ -23,28 +23,28 @@ import '../extension/card_assets.dart';
 ///     4：在强化的数字信息前后分别可以设置 辅助信息
 ///
 ///
-/// BrnNumberInfoWidget(
+/// NumberInfoWidget(
 ///     rowCount: 2,
 ///     itemChildren: [
-///         BrnNumberInfoItemModel(
+///         NumberInfoItemModel(
 ///            title: '数字信息数字信息数字信息数字信息数字信息数字信息',
 ///            number: '3',
 ///            preDesc: '前',
 ///            lastDesc: '后',
 ///         ),
-///         BrnNumberInfoItemModel(
+///         NumberInfoItemModel(
 ///            title: '数字信息',
 ///            number: '3',
 ///            preDesc: '前',
 ///            lastDesc: '后',
 ///            iconTapCallBack: (data) {}),
-///         BrnNumberInfoItemModel(
+///         NumberInfoItemModel(
 ///            title: '数字信息',
 ///            number: '3',
 ///            preDesc: '前',
 ///            lastDesc: '后',
 ///         ),
-///         BrnNumberInfoItemModel(
+///         NumberInfoItemModel(
 ///            title: '数字信息',
 ///            number: '3',
 ///            preDesc: '前',
@@ -54,9 +54,9 @@ import '../extension/card_assets.dart';
 ///),
 ///
 ///
-class BrnEnhanceNumberCard extends StatelessWidget {
+class EnhanceNumberCard extends StatelessWidget {
   /// 待展示的信息
-  final List<BrnNumberInfoItemModel>? itemChildren;
+  final List<NumberInfoItemModel>? itemChildren;
 
   ///如果超过一行，行间距则 默认为16
   final double? runningSpace;
@@ -80,7 +80,7 @@ class BrnEnhanceNumberCard extends StatelessWidget {
   final EnhanceNumberCardConfig? themeData;
 
   /// create BrnEnhanceNumberCard
-  BrnEnhanceNumberCard({
+  const EnhanceNumberCard({
     Key? key,
     this.itemChildren,
     this.rowCount = 3,
@@ -171,7 +171,7 @@ class BrnEnhanceNumberCard extends StatelessWidget {
   }
 
   Widget _buildItemWidget(
-      BrnNumberInfoItemModel model, EnhanceNumberCardConfig config,
+      NumberInfoItemModel model, EnhanceNumberCardConfig config,
       {double? width}) {
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -188,7 +188,7 @@ class BrnEnhanceNumberCard extends StatelessWidget {
   }
 
   Widget _buildTopWidget(
-      BrnNumberInfoItemModel model, EnhanceNumberCardConfig config,
+      NumberInfoItemModel model, EnhanceNumberCardConfig config,
       {double? width}) {
     if (model.topWidget != null) {
       return model.topWidget!;
@@ -219,7 +219,7 @@ class BrnEnhanceNumberCard extends StatelessWidget {
   }
 
   Widget _buildBottomWidget(
-      BrnNumberInfoItemModel model, EnhanceNumberCardConfig config,
+      NumberInfoItemModel model, EnhanceNumberCardConfig config,
       {double? width}) {
     if (model.bottomWidget != null) {
       return model.bottomWidget!;
@@ -313,7 +313,7 @@ class BrnEnhanceNumberCard extends StatelessWidget {
 }
 
 /// 用来显示强化数据的model
-class BrnNumberInfoItemModel {
+class NumberInfoItemModel {
   ///number必须是非中文，否则会展示异常，如果有中文信息 则设置pre和last字段
   final String? number;
 
@@ -327,7 +327,7 @@ class BrnNumberInfoItemModel {
   final String? lastDesc;
 
   ///icon的事件
-  final Function(BrnNumberInfoItemModel)? iconTapCallBack;
+  final Function(NumberInfoItemModel)? iconTapCallBack;
 
   ///icon的样式 可枚举 , 默认为问号
   final BrnNumberInfoIcon numberInfoIcon;
@@ -340,7 +340,7 @@ class BrnNumberInfoItemModel {
 
   ///上部分的：（number、preDesc、lastDesc）和topWidget 必须设置一个
   ///下部分的：title和title 必须设置一个
-  BrnNumberInfoItemModel({
+  NumberInfoItemModel({
     this.number,
     this.title,
     this.numberInfoIcon = BrnNumberInfoIcon.question,
