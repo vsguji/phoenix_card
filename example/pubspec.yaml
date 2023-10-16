@@ -33,6 +33,12 @@ dependencies:
 
   phoenix_card: 
     path: ../
+  phoenix_navbar: ^1.0.4
+  phoenix_line: ^1.0.1
+  phoenix_tag: ^1.0.3
+  phoenix_toast: ^1.0.1
+  phoenix_base: ^1.2.1
+  phoenix_text: ^1.0.1   
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2

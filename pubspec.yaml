@@ -1,6 +1,6 @@
 name: phoenix_card
 description: phoenix 将做为企业级基础组件:Card,提供项目支持。
-version: 1.0.3
+version: 1.0.4
 homepage: 'https://github.com/vsguji/phoenix_card.git'
 
 environment:
@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   phoenix_base: ^1.0.7
-  phoenix_text: ^1.0.0
+  phoenix_text: ^1.0.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
